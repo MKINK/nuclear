@@ -1,0 +1,308 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage[version=4]{mhchem}
+\usepackage{ctex}
+\usepackage{tikz}
+\sisetup{separate-uncertainty, exponent-product=\cdot}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\title{核物理试题解答}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{一、名词解释（20分，每题2分）}
+\begin{enumerate}
+  \item \textbf{半衰期}：p24放射性核素数目减少到原来一半所需的时间，$T_{1/2} = \dfrac{\ln 2}{\lambda}$
+  
+  \item \textbf{对关联}：p198原子核中核子配对运动的现象，导致奇偶质量差和转动惯量变化
+  
+  \item \textbf{同位素}：p7质子数相同中子数不同的核素（如\ce{^{12}C}与\ce{^{14}C}）
+  
+  \item \textbf{幻数}：p190使原子核特别稳定的核子数（2,8,20,28,50,82,126）
+  
+  \item \textbf{穆斯堡尔效应}：p182原子核无反冲发射/吸收γ射线的共振现象
+  
+  \item \textbf{镜像核}：p7质子数与中子数互换的核（如\ce{^{3}H}与\ce{^{3}He}）
+  
+  \item \textbf{同位旋}：p19 为了描述核子的质子态和中子态引入的算符，量子数t=1/2，质子态的t3=+1/2，中子态的t3=-1/2
+  
+  \item \textbf{超容许跃迁}：p152 母核与子核的波函数很相像的跃迁
+  
+  \item \textbf{内转换电子}：p172 跃迁时把核的激发能直接传递给核外电子而发射出来的电子
+  
+  \item \textbf{同核异能素}：p7,p175 质量数和质子数均相同，而能量状态不同的核素
+\end{enumerate}
+
+\section*{二、简述题（16分，每题4分）}
+\begin{enumerate}
+  \item \textbf{γ射线与物质相互作用p64}：
+  \begin{itemize}
+    \item 光电效应（低能γ被原子整体吸收）
+    \item 康普顿散射（γ与电子非弹性碰撞）
+    \item 电子对效应（$\gamma \to e^+ + e^-$，需$E_\gamma > 1.022$ MeV）
+  \end{itemize}
+
+  \item \textbf{β能谱特点与中微子假说p129,191}：
+  \begin{itemize}
+    \item 连续能谱（传统理论无法解释）
+    \item 泡利提出中微子假说：$\beta$衰变能量由$e^-$、$\nu$、子核三者分配
+    \item 实验测得$E_{\text{max}} = Q_\beta$，验证假说
+  \end{itemize}
+
+  \item \textbf{细致平衡原理p248}：
+  \begin{itemize}
+    \item 微观可逆性：$\sigma_{a\to b} = \sigma_{b\to a} \times \dfrac{p_b^2}{p_a^2}$
+    \item 适用范围：时间反演对称系统，无极化观测时成立
+  \end{itemize}
+
+  \item \textbf{β衰变选择定则}：
+  \begin{itemize}
+    \item 容许跃迁选择定则：$\Delta I=0, \pm 1$，$\Delta\pi=+1$
+    \item 其中0→0是纯费米跃迁，$\Delta I=\pm 1$是纯Gamow-Teller跃迁，$\Delta I=0$（除0→0）是F跃迁和G-T跃迁的混合
+  \end{itemize}
+\end{enumerate}
+
+\section*{三、计算题（64分）}
+
+\subsection*{第1题：\ce{^{7}Li}激发能计算}
+\textbf{教材p233原题}：
+
+
+\subsection*{第2题：\ce{^{198}Au}放射性活度计算}
+\textbf{已知p24,242,300,9-10}：
+\begin{itemize}
+  \item 金箔厚度：\SI{0.02}{cm}
+  \item 中子通量：\SI{1e12}{cm^{-2}.s^{-1}}
+  \item 截面：\SI{98.7}{b} = \SI{98.7e-24}{cm^2}
+  \item 照射时间：5分钟 = \SI{300}{s}
+  \item 金密度：\SI{19.3}{g/cm^3}
+  \item $T_{1/2} = 2.7\ \text{天} = 233280\ \si{s}$
+\end{itemize}
+
+\textbf{解}：
+\begin{enumerate}
+  \item 计算金原子数密度：
+  $$
+  n = \frac{\rho N_A}{A} = \frac{19.3 \times 6.022e23}{197} = \SI{5.89e22}{cm^{-3}}
+  $$
+  
+  \item 核反应数：
+  $$
+  N = \phi \sigma n t d = 1e12 \times 98.7e-24 \times 5.89e22 \times 300 \times 0.02 = \SI{3.49e13}{}
+  $$
+  
+  \item 放射性活度：
+  $$
+  A = \lambda N = \frac{\ln 2}{233280} \times 3.49e13 = \SI{1.04e8}{Bq/cm^2}
+  $$
+\end{enumerate}
+
+\subsection*{第3题：\ce{^{239}Pu}α衰变计算}
+\textbf{已知}：
+\begin{itemize}
+  \item $m_{\ce{^{239}Pu}} = \SI{0.5}{kg}$
+  \item $E_\alpha = \SI{5.1}{MeV}$
+  \item $T_{1/2} = 2.39e4\ \text{年} = 7.54e11\ \si{s}$
+  \item $1u = \SI{1.66e-24}{g}$
+\end{itemize}
+
+\textbf{解}：
+\begin{enumerate}
+  \item 衰变方程：
+  $$
+  \ce{^{239}_{94}Pu -> ^{235}_{92}U + }\alpha
+  $$
+
+  \item 衰变能：
+  $$
+  E_d = \frac{A}{A-4}E_k = \frac{239}{235} \times 5.1 MeV = 5.187 MeV
+  $$
+  
+  \item 衰变常数：
+  $$
+  \lambda = \frac{\ln 2}{T_{1/2}} = \frac{0.693}{7.54e11} = \SI{9.19e-13}{s^{-1}}
+  $$
+  
+  \item 计算原子数：
+  $$
+  N = \frac{500}{239} \times N_A = \SI{1.26e24}{}
+  $$
+  
+  \item 衰变率：
+  $$
+  A = \lambda N = 9.19e-13 \times 1.26e24 = \SI{1.16e12}{Bq}
+  $$
+  
+  \item 功率计算：
+  $$
+  P = A \times E_k \times 1.6e-13 = 1.16e12 \times 5.1 \times 1.6e-13 = \SI{0.095}{W}
+  $$
+\end{enumerate}
+
+
+
+
+
+
+\section*{四、中子分离能计算}
+\textbf{题目：}从\ce{^{16}O}和\ce{^{17}O}核中取出一个中子，各需多少能量？解释两者差异原因。
+
+\textbf{已知：}
+$$
+\begin{aligned}
+\Delta(n) &= 8.071\ \si{MeV} \\
+\Delta(\ce{^{15}O}) &= 2.856\ \si{MeV} \\
+\Delta(\ce{^{16}O}) &= -4.737\ \si{MeV} \\
+\Delta(\ce{^{17}O}) &= -0.809\ \si{MeV}
+\end{aligned}
+$$
+
+\textbf{解：}
+\begin{enumerate}
+  \item \ce{^{16}O}分离中子：
+  $$
+  S_n(\ce{^{16}O}) = \Delta(\ce{^{15}O}) + \Delta(n) - \Delta(\ce{^{16}O}) = 2.856 + 8.071 - (-4.737) = \SI{15.664}{MeV}
+  $$
+  
+  \item \ce{^{17}O}分离中子：
+  $$
+  S_n(\ce{^{17}O}) = \Delta(\ce{^{16}O}) + \Delta(n) - \Delta(\ce{^{17}O}) = (-4.737) + 8.071 - (-0.809) = \SI{4.143}{MeV}
+  $$
+  
+  \item 差异原因：
+  \begin{itemize}
+    \item \ce{^{16}O}是双幻数核（$Z=8,N=8$），壳层填充完整，结合能大
+    \item \ce{^{17}O}多一个中子处于未填满壳层，结合较松
+  \end{itemize}
+\end{enumerate}
+
+\section*{五、铀核性质计算}
+\textbf{题目：}计算\ce{^{238}U}的核半径与核物质密度（$r_0=1.45\ \si{fm}$）
+
+\textbf{解：}
+\begin{enumerate}
+  \item 核半径：
+  $$
+  R = r_0 A^{1/3} = 1.45 \times 238^{1/3} \approx \SI{8.99}{fm}
+  $$
+  
+  \item 核密度：
+  $$
+  \rho = \frac{m}{V} = \frac{238 \times (1.66 \times 10^{-24}\ \si{\gram})}{\frac{4}{3}\pi \left(8.99 \times 10^{-13}\ \si{\centi\meter}\right)^3} \approx \SI{1.3e14}{\gram\per\cubic\centi\meter}
+  $$
+\end{enumerate}
+
+\section*{六、中子质量计算}
+\textbf{题目：}利用\ce{^{210}Po}的α衰变产生α粒子进行核反应，求中子质量。
+
+\textbf{已知：}
+$$
+\begin{aligned}
+\Delta(\ce{^{210}Po}) &= -15.969\ \si{MeV} \\
+\Delta(\ce{^{206}Pb}) &= -23.081\ \si{MeV} \\
+\Delta(\alpha) &= 2.425\ \si{MeV} \\
+\Delta(\ce{^{11}B}) &= 8.668\ \si{MeV} \\
+\Delta(\ce{^{14}N}) &= 2.863\ \si{MeV} \\
+K_N &= 0.8\ \si{MeV},\quad K_n = 4.31\ \si{MeV}
+\end{aligned}
+$$
+
+\textbf{解：}
+\begin{enumerate}
+  \item α衰变Q值：
+  $$
+  Q_\alpha = \Delta(\ce{^{210}Po}) - [\Delta(\ce{^{206}Pb}) + \Delta(\alpha)] = 4.687\ \si{MeV}
+  $$
+  
+  \item α粒子动能：
+  $$
+  K_\alpha = \frac{206}{206+4}Q_\alpha \approx \SI{4.599}{MeV}
+  $$
+  
+  \item 反应Q值方程：
+  $$
+  Q = (\Delta(\ce{^{11}B}) + \Delta(\alpha)) - (\Delta(\ce{^{14}N}) + \Delta(n)) = 8.23 - \Delta(n)
+  $$
+  
+  \item 能量守恒：
+  $$
+  Q + K_\alpha = K_N + K_n \Rightarrow \Delta(n) = \SI{7.719}{MeV}
+  $$
+  
+  \item 中子质量：
+  $$
+  m_n = 1u + \frac{7.719}{931.494} \approx \SI{1.00828}{u}
+  $$
+\end{enumerate}
+
+\section*{七、衰变纲图绘制}
+P139 图6-11
+% \begin{center}
+% \begin{tikzpicture}[
+%     scale=0.8,
+%     transform shape,
+%     every node/.style={align=center},
+%     decay/.style={->, >=Stealth, thick},
+%     energy level/.style={thick, minimum width=1.5cm}
+%   ]
+  
+%   % ====== 能级定义 ======
+%   % 母核
+%   \node[energy level] (Cu) at (-4,0) {\ce{^{64}_{29}Cu}\\$1^+$};
+  
+%   % 子核能级
+%   \node[energy level] (Zn) at (4,0)  {\ce{^{64}_{30}Zn}\\$0^+$};
+%   \node[energy level] (NiStar) at (4,3) {\ce{^{64}_{28}Ni^*}\\$2^+$};
+%   \node[energy level] (Ni) at (4,-3) {\ce{^{64}_{28}Ni}\\$0^+$};
+  
+%   % ====== 衰变路径 ======
+%   % β-衰变到Zn
+%   \draw[decay, red] (Cu) 
+%     to[out=0, in=180] 
+%     node[above, pos=0.7] {$\beta^-$\\0.573 MeV\\40\%} 
+%     (Zn);
+  
+%   % β+衰变到Ni基态
+%   \draw[decay, blue] (Cu) 
+%     to[out=340, in=200] 
+%     node[below, pos=0.7] {$\beta^+$\\0.654 MeV\\19\%} 
+%     (Ni);
+  
+%   % 电子俘获到Ni基态
+%   \draw[decay, green!50!black, dashed] (Cu) 
+%     to[out=315, in=180] 
+%     node[above left, pos=0.6] {EC\\40.4\%} 
+%     (Ni.north west);
+  
+%   % 电子俘获到激发态
+%   \draw[decay, orange, dashed] (Cu) 
+%     to[out=45, in=180] 
+%     node[above right, pos=0.6] {EC\\0.6\%} 
+%     (NiStar.west);
+  
+%   % γ跃迁
+%   \draw[decay, purple] (NiStar) 
+%     -- 
+%     node[right] {$\gamma$\\1.348 MeV} 
+%     (Zn);
+
+%   % ====== 标注框 ======
+%   \node[draw=gray, rounded corners, text width=8cm, align=left, anchor=north west] 
+%     at (-6,-5) {
+%     \textbf{关键特征量：}
+%     \begin{itemize}
+%       \item 半衰期：$T_{1/2} = 12.7\ \text{小时}$
+%       \item 分支比总和：$40\% + 19\% + 40.4\% + 0.6\% = 100\%$
+%       \item 激发态寿命：$\tau \sim 10^{-12}\ \text{秒}$
+%       \item $Q_\beta = 1.348\ \text{MeV}$
+%     \end{itemize}
+%   };
+
+% \end{tikzpicture}
+% \end{center}
+
+
+\end{document}

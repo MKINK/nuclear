@@ -1,0 +1,232 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, chemformula, booktabs, siunitx, tikz, ctex}
+\usetikzlibrary{positioning}
+
+\title{核反应实验分析}
+\author{中国原子能科学研究院}
+
+\begin{document}
+
+\maketitle
+
+\section*{题目：p+$ \ce{^{19}F} $ 实验结果分析}
+\begin{table}[h]
+\centering
+\caption{p+$ \ce{^{19}F} $ 反应实验数据}
+\begin{tabular}{ccc}
+\toprule
+质子共振能量 (Lab) & $\gamma$能量 & $\alpha$能量 (质心系) \\
+(\si{keV}) & (\si{MeV}) & (\si{MeV}) \\
+\midrule
+668 & 6.13 & 1.30 \\
+668 & 6.92 & 1.47 \\
+668 & 7.12 & 2.10 \\
+843 & 无 & 7.14 \\
+874 & 6.13 & 1.46 \\
+874 & 6.92 & 1.62 \\
+874 & 7.12 & 2.25 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+已知 $ \ce{^{19}F(p,\alpha)^{16}O} $ 反应的 $ Q = \SI{8.11}{MeV} $，要求：
+\begin{enumerate}
+  \item 绘制 $ \ce{^{20}Ne} $ 和 $ \ce{^{16}O} $ 的能级图
+  \item 解释 843 keV 的 (p,$\alpha$) 共振反应中为何未观测到 $\gamma$ 射线
+\end{enumerate}
+
+\section*{解答}
+\subsection*{1. 能级图绘制}
+\begin{center}
+\begin{tikzpicture}[
+    level/.style={thick, minimum width=3cm, fill=blue!10},
+    label/.style={midway, font=\small}
+]
+% ²⁰Ne 能级
+\draw[level] (0,0) -- node[above] {基态} (4,0);
+\draw[level] (0,8.74) -- node[above] {激发态 (8.74 MeV)} (4,8.74);  % 843 keV 对应态
+
+% ¹⁶O 能级
+\draw[level] (6,0) -- node[above] {基态} (10,0);
+\draw[level] (6,6.13) -- node[above] {6.13 MeV} (10,6.13);
+\draw[level] (6,7.12) -- node[above] {7.12 MeV} (10,7.12);
+
+% 反应路径
+\draw[->, thick, red] (2,8.74) -- node[label, left] {$\alpha$ (7.14 MeV)} (2,0);
+\draw[->, thick, blue, dashed] (2,8.74) -- (8,6.13) node[label, above] {理论$\gamma$路径};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{2. $\gamma$ 射线缺失解释}
+在 843 keV 共振反应中，未观测到 $\gamma$ 射线的原因如下：
+
+\paragraph{能量守恒分析}
+\begin{align*}
+E_{\text{质心}} &= 843 \times \frac{19}{20} = \SI{799}{keV} \\
+E_{\text{激发态}} &= Q + E_{\text{质心}} = 8.11 + 0.799 = \SI{8.909}{MeV}
+\end{align*}
+
+\paragraph{关键机制}
+\begin{itemize}
+  \item \textbf{直接衰变优先}：激发态寿命 $ \tau \sim \SI{e-21}{s} $，$\alpha$ 衰变速率 ($ \lambda_\alpha \sim \SI{e21}{s^{-1}} $) 远高于 $\gamma$ 跃迁速率 ($ \lambda_\gamma \sim \SI{e12}{s^{-1}} $)
+  
+  \item \textbf{能级不匹配}：
+  $$
+  \Delta E = 8.909 - 6.13 = \SI{2.779}{MeV} \quad (\text{无对应实验$\gamma$能量观测})
+  $$
+  
+  \item \textbf{角动量选择定则}：
+  \begin{align*}
+  J^{\pi}(\ce{^{20}Ne^*}) &= 1^- \\
+  J^{\pi}(\ce{^{16}O}) &= 0^+ \\
+  \Delta L &= 1 \ (\text{需要} \ E1 \ \text{跃迁}) \quad \text{但中间态无法满足角动量守恒}
+  \end{align*}
+\end{itemize}
+
+\paragraph{实验验证}
+通过 $\alpha$ 粒子能量反推：
+$$
+E_{\alpha}^{\text{理论}} = 8.909 - 0 = \SI{8.909}{MeV} \quad (\text{实测} \ 7.14\ \si{MeV},\ \text{动量分配导致差异})
+$$
+
+\section*{题目:试写出两种可利用的聚变方程式}
+以下是两种常见的可利用的核聚变反应方程式：
+
+1. **氘-氚（D-T）聚变反应**  
+   \[
+   \ce{^2_1H + ^3_1H -> ^4_2He + ^1_0n + 17.6\ MeV}
+   \]  
+   **特点**：  
+   • 释放能量高（17.6 MeV），反应条件相对较低（约1亿摄氏度）。  
+   • 应用于国际热核实验堆（ITER）等聚变装置。  
+
+2. **氘-氘（D-D）聚变反应（路径一）**  
+   \[
+   \ce{^2_1H + ^2_1H -> ^3_2He + ^1_0n + 3.27\ MeV}
+   \]  
+   **或路径二**：  
+   \[
+   \ce{^2_1H + ^2_1H -> ^3_1H + ^1_1H + 4.03\ MeV}
+   \]  
+   **特点**：  
+   • 燃料易获取（氘存在于海水中），但需要更高温度（约4亿摄氏度）。  
+   • 两种分支反应概率相近，总能量约3.65 MeV/反应。  
+
+---
+
+**注**：实际应用中，氘-氚反应因能量优势更为常用，而氘-氦3（\(\ce{^3_2He}\)）反应因无中子辐射也被探索，但需极高温度（约10亿℃）。
+
+以下是根据实验数据整理的题目和解答：
+
+---
+
+\section*{8}
+
+#### **实验反应过程**
+1. **质子诱发反应**  
+\[
+\ce{^{63}Cu + p -> ^{64}Zn^* -> \begin{cases} 
+^{62}Zn + 2n \\ 
+^{62}Cu + p + n 
+\end{cases}}
+\]
+2. **α粒子诱发反应**  
+\[
+\ce{^{60}Ni + \alpha -> ^{64}Zn^* -> \begin{cases} 
+^{62}Zn + 2n \\ 
+^{62}Cu + p + n 
+\end{cases}}
+\]
+
+#### **实验结果**
+不同反应通道的截面比值为：  
+\[
+\frac{\sigma(p,2n)}{\sigma(p,pn)} : \frac{\sigma(\alpha,2n)}{\sigma(\alpha,pn)} = 1 : 1
+\]
+
+---
+
+### **理论解答**
+
+#### **1. 复合核模型理论**
+根据Bohr的复合核假设，核反应分为两个独立阶段：  
+• **复合核形成**：入射粒子与靶核融合形成激发态复合核（\(\ce{^{64}Zn^*}\)）  
+• **统计衰变**：复合核通过不同通道独立衰变  
+
+反应截面可表示为：  
+\[
+\sigma(a,b) = \sigma_{\text{形成}}(a) \cdot P_{\text{衰变}}(b)
+\]  
+其中：  
+• \(\sigma_{\text{形成}}(a)\)：入射粒子\(a\)形成复合核的概率  
+• \(P_{\text{衰变}}(b)\)：复合核通过通道\(b\)衰变的概率  
+
+---
+
+#### **2. 截面比值分析**
+对质子诱发和α诱发反应：  
+\[
+\frac{\sigma(p,2n)}{\sigma(p,pn)} = \frac{\sigma_{\text{形成}}(p) \cdot P(2n)}{\sigma_{\text{形成}}(p) \cdot P(pn)} = \frac{P(2n)}{P(pn)}  
+\]  
+\[
+\frac{\sigma(\alpha,2n)}{\sigma(\alpha,pn)} = \frac{\sigma_{\text{形成}}(\alpha) \cdot P(2n)}{\sigma_{\text{形成}}(\alpha) \cdot P(pn)} = \frac{P(2n)}{P(pn)}  
+\]  
+
+由于两比值均退化为相同的衰变概率比，故有：  
+\[
+\frac{\sigma(p,2n)}{\sigma(p,pn)} = \frac{\sigma(\alpha,2n)}{\sigma(\alpha,pn)} = \frac{P(2n)}{P(pn)}
+\]
+
+---
+
+#### **3. 衰变概率计算**
+根据统计模型，衰变概率由能级密度决定：  
+\[
+P(b) \propto \frac{\rho(E^*,J^\pi)}{\sum \rho_i(E^*,J^\pi)}
+\]  
+其中：  
+• \(\rho\)：剩余核的能级密度函数  
+• \(E^*\)：激发能，\(J^\pi\)：角动量和宇称  
+
+对于相同的复合核\(\ce{^{64}Zn^*}\)，无论由何种入射粒子形成：  
+\[
+\frac{P(2n)}{P(pn)} = \frac{\rho(^{62}Zn)}{\rho(^{62}Cu)}
+\]  
+仅与最终产物的能级密度相关，与入射粒子无关  
+
+---
+
+#### **4. 实验验证**
+通过能级密度公式计算：  
+\[
+\rho(E^*) \propto \exp\left(2\sqrt{aE^*}\right)
+\]  
+其中\(a\)为能级密度参数，对\(^{62}Zn\)和\(^{62}Cu\)：  
+\[
+a(^{62}Zn) \approx a(^{62}Cu) \quad (\text{因质量数相近})
+\]  
+得：  
+\[
+\frac{\rho(^{62}Zn)}{\rho(^{62}Cu)} \approx 1 \quad \Rightarrow \quad \frac{P(2n)}{P(pn)} \approx 1
+\]  
+与实验观测的截面比值一致  
+
+---
+
+### **结论**
+实验结果表明：  
+1. 不同入射粒子（\(p\)和\(\alpha\)）形成的复合核\(\ce{^{64}Zn^*}\)具有相同的统计衰变特性  
+2. 衰变通道的截面比值仅由终态核的能级密度决定，与复合核形成过程无关  
+3. 实验结果验证了复合核模型的正确性  
+
+---
+
+**关键公式总结**  
+\[
+\boxed{
+\frac{\sigma(p,2n)}{\sigma(p,pn)} = \frac{\sigma(\alpha,2n)}{\sigma(\alpha,pn)} = \frac{\rho(^{62}Zn)}{\rho(^{62}Cu)} \approx 1
+}
+\]
+
+
+\end{document}

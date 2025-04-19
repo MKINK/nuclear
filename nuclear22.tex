@@ -1,0 +1,186 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{ctex}
+\begin{document}
+
+\section*{一、名词解释（15 分，每题 3 分）}
+\begin{enumerate}
+    \item \textbf{衰变常量}：放射性核素在单位时间内发生衰变的概率，用$\lambda$表示，单位是$\mathrm{s^{-1}}$。
+    
+    \item \textbf{原子核的同位旋}：描述原子核中质子与中子对称性的量子数，表征核子的电荷独立性。
+    
+    \item \textbf{镜像核}：质子数和中子数互换的一对原子核（如$^{13}\mathrm{C}$和$^{13}\mathrm{N}$）。
+    
+    \item \textbf{内转换现象}：原子核退激时直接将能量传递给核外电子使其电离的现象（非γ辐射）。
+    
+    \item \textbf{渡越时间}：p78带电粒子在介质中从获得能量到损失全部能量所经历的时间。
+\end{enumerate}
+
+\section*{二、简述题（25 分，每题 5 分）}
+\begin{enumerate}
+    \item \textbf{高速正电子作用过程}：p62
+    \begin{itemize}
+        \item 电离损失：与原子电子发生库仑作用损失能量
+        \item 辐射损失：产生轫致辐射
+        \item 湮灭：与电子发生湮灭产生双$\gamma$光子（511 keV）
+    \end{itemize}
+    
+    \item \textbf{核反应三阶段及守恒律}：
+    三阶段模型：
+    \begin{enumerate}
+        \item 独立粒子阶段（入射粒子与靶核作用）
+        \item 复合系统阶段（形成中间复合核）
+        \item 衰变阶段（复合核衰变）
+    \end{enumerate}
+    守恒定律：能量、动量、角动量、电荷、重子数
+    
+    \item \textbf{降低源外本底措施}：pp346
+    \begin{itemize}
+        \item 屏蔽：铅室、铜屏蔽层
+        \item 符合测量：反符合计数器
+        \item 低温运行：减少热噪声
+        \item 材料筛选：低本底材料
+    \end{itemize}
+    
+    \item \textbf{中子探测原理}：pp297
+    \begin{itemize}
+        \item 核反应法：利用中子引发的核反应
+        \item 典型反应：$^{10}\mathrm{B}(n,\alpha)^{7}\mathrm{Li}$，$^{3}\mathrm{He}(n,p)^{3}\mathrm{H}$
+        \item 探测器：BF$_3$正比计数器、锂玻璃探测器
+    \end{itemize}
+    
+    \item \textbf{β能谱特点及中微子解释}：
+    特点：
+    \begin{itemize}
+        \item 连续能谱
+        \item 存在最大能量$E_{max}$
+        \item 平均能量约为$E_{max}/3$
+    \end{itemize}
+    中微子假说：β衰变时能量在三体（β粒子、中微子、子核）间分配，解释连续谱和能量守恒
+\end{enumerate}
+
+\section*{三、计算题（60 分，每题 15 分）}
+\begin{enumerate}
+    \item \textbf{核反应产额计算}：
+    
+    \textbf{已知}：
+    \begin{align*}
+        I &= 1\ \mathrm{nA} = 1\times10^{-9}\ \mathrm{C/s} \\
+        \sigma &= 450\ \mathrm{mb} = 450\times10^{-27}\ \mathrm{cm^2} \\
+        \text{靶厚} &= 1\ \mathrm{mg/cm^2}
+    \end{align*}
+    
+    \textbf{解题步骤}：
+    \begin{enumerate}
+        \item 单位时间内入射粒子总数：
+        $$
+        N_{beam} = \frac{I}{e} = \frac{1\times10^{-9}}{1.6\times10^{-19}} = 6.25\times10^{9}\ \mathrm{s^{-1}}
+        $$
+        
+        \item 计算靶原子面密度：
+        $$
+        N_{s} = \frac{N_A D}{A} = \frac{1\times10^{-3}}{67}\times6.022\times10^{23} = 8.99\times10^{18}\ \mathrm{cm^{-2}}
+        $$
+
+        \item 计算产额：
+        $$
+        Y = N_{s} \cdot \sigma
+        $$
+        
+        \item 单位时间生成的复合核数：
+        $$
+        N = N_{beam} \cdot Y = 6.25\times10^{9} \times 8.99\times10^{18} \times 450\times10^{-27} = 2.53 \times10^{4}\ \mathrm{s^{-1}}
+        $$
+    \end{enumerate}
+    
+    \item \textbf{地球年龄计算}：
+    
+    \textbf{已知}：
+    \begin{align*}
+        T_{235} &= 7.038\times10^8\ \mathrm{年} \\
+        T_{238} &= 4.468\times10^9\ \mathrm{年} \\
+        \frac{N_{235}}{N_{238}}|_{现在} &= \frac{0.72}{99.2745} \\
+        \frac{N_{235}}{N_{238}}|_{初始} &= \frac{1}{2}
+    \end{align*}
+    
+    \textbf{解题步骤}：
+    \begin{enumerate}
+        \item 建立衰变方程：
+        $$
+        \frac{N_{235}}{N_{238}} = \frac{1}{2} e^{-(\lambda_{235}-\lambda_{238})t}
+        $$
+        
+        \item 代入当前比例：
+        $$
+        \frac{0.72}{99.2745} = \frac{1}{2} e^{-(\frac{\ln2}{7.038\times10^8} - \frac{\ln2}{4.468\times10^9})t}
+        $$
+        
+        \item 解方程得：
+        $$
+        t \approx \frac{\ln(2 \times 0.72/99.2745)}{\frac{1}{4.468\times10^9} - \frac{1}{7.038\times10^8}} \approx 6.02\times10^9\ \mathrm{年}
+        $$
+    \end{enumerate}
+\end{enumerate}
+
+\section*{题目3}
+计算$\mathrm{^{24}Na}$的2.76MeV $\gamma$射线在NaI(Tl)单晶谱仪的输出脉冲幅度谱上，康普顿边缘与单逃逸峰之间的相对位置。
+
+\subsection*{解答p66}
+
+\paragraph{步骤1：计算康普顿边缘能量}
+康普顿边缘对应最大反冲电子能量。根据康普顿边缘公式：
+$$
+E_{emax} =   \frac{E_\gamma}{1 + \frac{m_0 c^2}{2E_\gamma}} 
+$$
+其中，$E_\gamma = \SI{2.76}{MeV}$，$m_e c^2 = \SI{0.511}{MeV}$。代入得：
+$$
+E_{emax} = \SI{2.526}{MeV}
+$$
+
+\paragraph{步骤2：计算单逃逸峰能量}
+单逃逸峰由电子对效应产生，逃逸一个$\SI{0.511}{MeV}$光子：
+$$
+E_{\text{单逃逸}} = E_\gamma - 0.511 = \SI{2.249}{MeV}
+$$
+
+\paragraph{步骤3：确定相对位置}
+在能谱中，能量与脉冲幅度成正比。康普顿边缘（$\SI{2.526}{MeV}$）对应的幅度高于单逃逸峰（$\SI{2.249}{MeV}$），因此康普顿边缘位于单逃逸峰的\textbf{右侧}。
+
+\section*{题目4}
+在测量极化度的实验中，一般在相对束流方向的两侧同样角度安排两个相同的探测器。设$R$和$L$分别为右侧和左侧探测器的总计数（假设无本底），极化度定义为：
+$$
+P = \frac{R - L}{R + L}
+$$
+试以$R$和$L$为自变量，推导$P$的标准误差表达式。
+
+\subsection*{解答}
+
+\paragraph{步骤1：误差传播公式}
+$P$的标准误差$\sigma_P$由$R$和$L$的方差决定：
+$$
+\sigma_P = \sqrt{ \left( \frac{\partial P}{\partial R} \right)^2 \sigma_R^2 + \left( \frac{\partial P}{\partial L} \right)^2 \sigma_L^2 }
+$$
+
+\paragraph{步骤2：计算偏导数}
+$$
+\frac{\partial P}{\partial R} = \frac{(R+L) - (R-L)}{(R+L)^2} = \frac{2L}{(R+L)^2}, \quad
+\frac{\partial P}{\partial L} = \frac{-(R+L) - (R-L)}{(R+L)^2} = \frac{-2R}{(R+L)^2}
+$$
+
+\paragraph{步骤3：泊松分布假设}
+计数服从泊松分布，$\sigma_R^2 = R$, $\sigma_L^2 = L$，代入得：
+$$
+\sigma_P = \sqrt{ \left( \frac{2L}{(R+L)^2} \right)^2 R + \left( \frac{-2R}{(R+L)^2} \right)^2 L }
+$$
+
+\paragraph{步骤4：简化表达式}
+$$
+\sigma_P = \frac{2}{(R+L)^2} \sqrt{L^2 R + R^2 L} = \frac{2\sqrt{RL(R+L)}}{(R+L)^2} = \frac{2\sqrt{RL}}{(R+L)^{3/2}}
+$$
+
+\paragraph{最终表达式}
+$$
+\sigma_P = \frac{2\sqrt{RL}}{(R+L)^{3/2}} = \frac{2\sqrt{RL}}{(R+L)\sqrt{R+L}}
+$$
+\end{document}

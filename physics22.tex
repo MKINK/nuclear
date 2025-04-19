@@ -1,0 +1,327 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{enumitem}
+\usepackage{esint}
+\usepackage{ctex}  
+\title{物理试题与解答}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{一、简答题（25分，每小题5分）}
+\begin{enumerate}[label=\arabic*.]
+    \item 圆锥摆的摆球在水平面内作圆周运动：
+    \begin{itemize}
+        \item 动量是否守恒？角动量是否守恒？
+        \item 选择摆球与地球组成的系统，机械能是否守恒？
+    \end{itemize}
+    \textbf{解答：}
+    \begin{itemize}
+        \item 动量不守恒：摆球受绳张力作用，存在外力 $\displaystyle \sum \vec{F} = \frac{mv^2}{r} \neq 0$
+        \item 角动量守恒：合外力矩 $\displaystyle \sum \vec{M} = \vec{r} \times \vec{T} \equiv 0$（张力始终指向圆心）
+        \item 机械能守恒：系统仅受保守力（重力）做功，$\Delta E_{mec} = W_{nc} = 0$
+    \end{itemize}
+
+    \item 为什么热力学过程中的功仅与初末态有关，而与中间过程无关？\\
+    \textbf{解答：} 题目表述有误，准确应为绝热过程。根据热力学第一定律：
+    $$
+    \Delta U = Q - W
+    $$
+    绝热过程$Q=0$，故$W = -\Delta U$。因内能是状态量，$\Delta U$仅取决于初末态，故绝热功与路径无关。
+
+    \item 孤立导体球壳中心放置点电荷时，内外表面电荷分布是否均匀？若点电荷偏离球心，情况如何？\\
+    \textbf{解答：}
+    \begin{itemize}
+        \item 中心放置：内表面均匀（$\oint \vec{E} \cdot d\vec{a} = Q_{enc}/\varepsilon_0$），外表面均匀（静电平衡导体表面等势）
+        \item 偏离球心：内表面非均匀（感应电荷分布不对称），外表面仍均匀（外部电场屏蔽）
+    \end{itemize}
+
+    \item 线偏振光通过偏振片后振动方向转过90度，至少需要几块理想偏振片？此时透射光强最大值是原光强的几倍？\\
+    \textbf{解答：} 设初始偏振方向与最终方向夹角为$\theta$，由马吕斯定律：
+    $$
+    I = I_0 \cos^2\theta
+    $$
+    单次旋转90°时$I=0$，故需至少2片。设中间片转$\alpha$角：
+    $$
+    I = I_0 \cos^2\alpha \cdot \cos^2(90^\circ-\alpha) = \frac{I_0}{4}\sin^2(2\alpha)
+    $$
+    当$\alpha=45^\circ$时取得最大值$I_{max} = I_0/4$
+
+    \item 碱金属原子能级与轨道角量子数相关的原因是什么？造成精细能级的原因是什么？\\
+    \textbf{解答：}
+    \begin{itemize}
+        \item 主因：原子实的极化与轨道贯穿效应（不同$l$值的电子受原子实屏蔽不同）
+        \item 精细结构：相对论修正（自旋-轨道耦合作用）$\Delta E = \frac{\alpha^2}{n^3}\left( \frac{1}{j+1/2} \right)$
+    \end{itemize}
+\end{enumerate}
+
+\section*{二、计算题}
+\begin{enumerate}[label=\arabic*.]
+    \item （20分）半径为$R$的接地金属球外包裹相对介电常数为$\varepsilon_r$、外径$2R$的电介质壳，介质内均匀分布自由电荷$q_0$，求介质壳外表面电势。
+    
+    \textbf{解答：}
+    \begin{enumerate}
+        \item 自由电荷体密度：$\rho = \dfrac{3q_0}{4\pi[(2R)^3 - R^3]} = \dfrac{3q_0}{28\pi R^3}$
+        \item 极化电荷：$\rho_p = -\nabla \cdot \vec{P} = -\dfrac{\varepsilon_r-1}{\varepsilon_r}\rho$
+        \item 金属球感应电荷$q'$，由接地条件$\phi_{total}(R) = 0$：
+        $$
+        \dfrac{1}{4\pi\varepsilon_0}\left( \dfrac{q'}{R} + \dfrac{q_0 + q'}{2R\varepsilon_r} \right) = 0 \Rightarrow q' = -\dfrac{q_0}{1+2\varepsilon_r}
+        $$
+        \item 外表面电势：
+        $$
+        \phi = \dfrac{q_0 + q'}{4\pi\varepsilon_0(2R)} = \dfrac{q_0}{8\pi\varepsilon_0 R}\left(1 - \dfrac{1}{\varepsilon_r}\right)
+        $$
+    \end{enumerate}
+
+    \item （15分）圆形极板电容器（极板面积$S$，间距$d$）通过细导线（电阻$R$，长$d$）连接交变电压$U=U_0\sin\omega t$，求：
+    \begin{enumerate}
+        \item 细导线电流
+        \item 位移电流
+        \item 外接线电流
+        \item 极板间距轴线$r$处（$r<a$）的磁场强度
+    \end{enumerate}
+    
+    \textbf{解答：}
+    \begin{enumerate}
+        \item 传导电流：
+        $$
+        I_c = \dfrac{U}{R} = \dfrac{U_0}{R}\sin\omega t
+        $$
+        \item 位移电流：
+        $$
+        I_D = \varepsilon_0 \dfrac{d\Phi_E}{dt} = \varepsilon_0 \dfrac{d}{dt}\left( \dfrac{U}{d}S \right) = \dfrac{\varepsilon_0 S U_0 \omega}{d}\cos\omega t
+        $$
+        \item 外接线电流（全电流连续性）：
+        $$
+        I_{total} = I_c + I_D = \dfrac{U_0}{R}\sin\omega t + \dfrac{\varepsilon_0 S U_0 \omega}{d}\cos\omega t
+        $$
+        \item 由安培环路定理修正形式：
+        $$
+        \oint \vec{H} \cdot d\vec{l} = I_{enc} + \dfrac{d}{dt}\int \vec{D} \cdot d\vec{a}
+        $$
+        取半径$r$的环路：
+        $$
+        H \cdot 2\pi r = \dfrac{\pi r^2}{\pi a^2}I_{total} \Rightarrow H = \dfrac{r}{2\pi a^2}\left( \dfrac{U_0}{R}\sin\omega t + \dfrac{\varepsilon_0 S U_0 \omega}{d}\cos\omega t \right)
+        $$
+    \end{enumerate}
+
+    \item （20分）单原子理想气体进行x过程，其$p\text{-}V$曲线下移$p_0$后与$T_0$等温线重合，求：
+    \begin{enumerate}
+        \item x过程的$V\text{-}T$关系式
+        \item 比热$c$与压强$p$的关系
+    \end{enumerate}
+    
+    \textbf{解答：}
+    \begin{enumerate}
+        \item 由题意得x过程方程：
+        $$
+        p = \dfrac{\nu R T}{V} - p_0
+        $$
+        整理得$V\text{-}T$关系：
+        $$
+        V = \dfrac{\nu R T}{p + p_0}
+        $$
+        \item 热力学第一定律：
+        $$
+        dQ = \dfrac{3}{2}\nu R dT + p dV
+        $$
+        将$dV = \dfrac{\nu R dT}{p + p_0} - \dfrac{\nu R T}{(p + p_0)^2}dp$代入：
+        $$
+        c = \dfrac{1}{\nu}\dfrac{dQ}{dT} = \dfrac{3R}{2} + \dfrac{p R}{p + p_0} - \dfrac{p R T}{(p + p_0)^2}\dfrac{dp}{dT}
+        $$
+        最终化简得：
+        $$
+        c = \dfrac{5R}{2} - \dfrac{R p_0}{p}
+        $$
+    \end{enumerate}
+
+    \item （20分）杨氏干涉装置中用三缝（缝距$d$和$\frac{3d}{2}$）替代双缝，求：
+    \begin{enumerate}
+        \item 幕上强度分布公式
+        \item 一级极大角位置$\theta$
+        \item $\theta=\frac{\pi}{2}$方向强度与一级极大强度之比
+    \end{enumerate}
+    
+    \textbf{解答：错误}
+    \begin{enumerate}
+        \item 三缝干涉振幅叠加：
+        $$
+        A = A_0 \left[ 1 + e^{i\delta_1} + e^{i\delta_2} \right]
+        $$
+        其中$\delta_1 = \dfrac{2\pi d \sin\theta}{\lambda}$, $\delta_2 = \dfrac{3\pi d \sin\theta}{\lambda}$，强度分布：
+        $$
+        I = I_0 \left[ 3 + 4\cos\delta_1 + 2\cos(\delta_2 - \delta_1) \right]
+        $$
+        化简得：
+        $$
+        I(\theta) = I_0 \left[ 3 + 4\cos\left(\dfrac{\pi d \sin\theta}{\lambda}\right) + 2\cos\left(\dfrac{3\pi d \sin\theta}{\lambda}\right) \right]
+        $$
+        \item 一级极大条件：
+        $$
+        \dfrac{\pi d \sin\theta}{\lambda} = \pm \pi \Rightarrow \theta = \arcsin\left( \dfrac{\lambda}{3d} \right)
+        $$
+        \item 当$\theta = \pi/2$时：
+        $$
+        I_{\pi/2} = I_0 [3 + 4\cos(\pi/2) + 2\cos(3\pi/2)] = 3I_0
+        $$
+        一级极大强度$I_{max} = 9I_0$，故比值：
+        $$
+        \dfrac{I_{\pi/2}}{I_{max}} = \dfrac{1}{3}
+        $$
+    \end{enumerate}
+\end{enumerate}
+
+介质壳外表面的电势计算如下：
+
+1. **电荷分布与电场计算**：  
+   电介质壳内（\( R \leq r \leq 2R \)）的自由电荷体密度为 \(\rho = \frac{3q_0}{28\pi R^3}\)。通过高斯定理，电位移矢量 \( D(r) \) 为：  
+   \[
+   D(r) = \frac{q_0 (r^3 - R^3)}{28\pi R^3 r^2}
+   \]  
+   对应的电场强度 \( E_1(r) = \frac{D(r)}{\varepsilon_0 \varepsilon_r} = \frac{q_0 (r^3 - R^3)}{28\pi \varepsilon_0 \varepsilon_r R^3 r^2} \)。
+
+2. **金属球电荷确定**：  
+   金属球接地（电势为零），设其电荷为 \( Q \)。总电势由电介质壳内外的电场积分决定：  
+   \[
+   \int_R^{2R} E_1(r) \, dr + \int_{2R}^\infty E_2(r) \, dr = 0
+   \]  
+   解得 \( Q = -\frac{q_0 (7\varepsilon_r + 2)}{7\varepsilon_r} \)。
+
+3. **介质壳外电场与电势**：  
+   外部区域（\( r \geq 2R \)）的电场为：  
+   \[
+   E_2(r) = \frac{Q + q_0}{4\pi \varepsilon_0 r^2}
+   \]  
+   代入 \( Q + q_0 = -\frac{2q_0}{7\varepsilon_r} \)，积分得到介质壳外表面（\( r = 2R \)）的电势：  
+   \[
+   \phi = \int_{2R}^\infty E_2(r) \, dr = -\frac{q_0}{28\pi \varepsilon_0 \varepsilon_r R}
+   \]
+
+**答案**：  
+介质壳外表面的电势为  
+\[
+\boxed{-\dfrac{q_0}{28\pi \varepsilon_0 \varepsilon_r R}}
+\]
+
+这道题目要求计算介质壳外表面的电势，已知金属球接地，介质壳内均匀分布自由电荷 \( q_0 \)，相对介电常数为 \( \varepsilon_r \)。以下是详细的解题过程：
+
+---
+
+### **解题步骤**
+
+#### **1. 划分区域并分析对称性**
+• **金属球内部**（\( r < R \)）：导体内部电场为零，电势与接地条件一致，即 \( \phi(R) = 0 \)。
+• **介质壳内部**（\( R \le r \le 2R \)）：自由电荷 \( q_0 \) 均匀分布，介电常数为 \( \varepsilon_r \)。
+• **介质壳外部**（\( r > 2R \)）：视为真空（介电常数 \( \varepsilon_0 \)）。
+
+#### **2. 确定电位移 \( D(r) \)**
+利用高斯定理，仅考虑自由电荷：
+• **介质壳内部**（\( R \le r \le 2R \））：
+  \[
+  D(r) \cdot 4\pi r^2 = Q + \frac{q_0 (r^3 - R^3)}{7R^3},
+  \]
+  解得：
+  \[
+  D(r) = \frac{1}{4\pi r^2} \left[ Q + \frac{q_0 (r^3 - R^3)}{7R^3} \right].
+  \]
+• **介质壳外部**（\( r > 2R \））：
+  \[
+  D(r) = \frac{Q + q_0}{4\pi r^2}.
+  \]
+
+#### **3. 计算电场强度 \( E(r) \)**
+• **介质壳内部**：\( E_1(r) = \frac{D(r)}{\varepsilon_0 \varepsilon_r} \).
+• **介质壳外部**：\( E_2(r) = \frac{D(r)}{\varepsilon_0} \).
+
+#### **4. 金属球接地条件**
+金属球电势为零，积分电场从 \( r = R \) 到无穷远：
+\[
+\int_{R}^{2R} E_1 \, dr + \int_{2R}^{\infty} E_2 \, dr = 0.
+\]
+代入 \( E_1 \) 和 \( E_2 \)，解得金属球上的电荷 \( Q \)：
+\[
+Q = -\frac{q_0 (7\varepsilon_r + 2)}{7(\varepsilon_r + 1)}.
+\]
+
+#### **5. 计算介质壳外表面电势**
+介质壳外表面（\( r = 2R \））的电势为外部电场积分：
+\[
+\phi(2R) = \int_{2R}^{\infty} E_2 \, dr = \frac{Q + q_0}{8\pi \varepsilon_0 R}.
+\]
+代入 \( Q \) 的表达式并化简：
+\[
+\phi(2R) = \frac{5q_0}{56\pi \varepsilon_0 R (\varepsilon_r + 1)}.
+\]
+
+---
+
+### **最终答案**
+介质壳外表面的电势为：
+\[
+\phi(2R) = \boxed{\frac{5q_0}{56\pi \varepsilon_0 R (\varepsilon_r + 1)}}.
+\]
+
+---
+
+### **关键点总结**
+1. **接地条件**：金属球电势为零，通过积分总电场确定其电荷 \( Q \)。
+2. **高斯定理应用**：介质中仅自由电荷影响电位移 \( D \)，结合介电常数计算电场。
+3. **电势叠加**：介质壳外表面电势由外部电场积分得到，与 \( Q \) 和 \( q_0 \) 相关。
+
+此解法系统性地结合了导体接地、介质极化和高斯定理，确保了电势计算的准确性。
+
+### 解答：
+
+**1. x过程的V-T关系式推导：**
+
+• 题目指出，x过程曲线向下平移\( p_0 \)后与温度为\( T_0 \)的等温线重合。等温过程方程为\( pV = \nu R T_0 \)，因此平移后的x过程方程为：
+  \[
+  p - p_0 = \frac{\nu R T_0}{V} \quad \Rightarrow \quad p = \frac{\nu R T_0}{V} + p_0
+  \]
+  
+• 结合理想气体状态方程\( pV = \nu R T \)，代入上式得：
+  \[
+  \left( \frac{\nu R T_0}{V} + p_0 \right) V = \nu R T \quad \Rightarrow \quad \nu R T_0 + p_0 V = \nu R T
+  \]
+  
+• 整理得V-T关系式：
+  \[
+  V = \frac{\nu R}{p_0} (T - T_0)
+  \]
+
+**2. x过程的比热\( c \)与压强\( p \)的关系推导：**
+
+• 热力学第一定律：\( dQ = \nu c dT = \nu C_v dT + p dV \)，其中单原子气体\( C_v = \frac{3}{2}R \)。
+
+• 利用已求出的\( V = \frac{\nu R}{p_0} (T - T_0) \)，对温度求导得：
+  \[
+  \frac{dV}{dT} = \frac{\nu R}{p_0}
+  \]
+
+• 代入热力学第一定律，消去\( \nu dT \)得：
+  \[
+  c = C_v + \frac{p}{\nu} \cdot \frac{dV}{dT} = \frac{3R}{2} + \frac{p R}{p_0}
+  \]
+
+### 最终答案：
+
+1. **x过程的V-T关系式**为：
+   \[
+   V = \frac{v R}{p_0} (T - T_0)
+   \]
+   （其中\( v \)为摩尔数，题目中符号为v）
+
+2. **x过程的比热\( c \)与压强\( p \)的关系**为：
+   \[
+   c = \frac{3R}{2} + \frac{R}{p_0} p
+   \]
+
+---
+
+**注：** 答案已根据题目符号调整，确保与题目中使用的物理量符号一致（如摩尔数用\( v \)而非\( \nu \)）。
+
+\end{document}
